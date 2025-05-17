@@ -2,15 +2,14 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const sidebarLinks = document.querySelectorAll('.sidebar a');
+  const allLinks = document.querySelectorAll('a');
   const mainContent = document.querySelector('.main-content');
 
-  // Load page content dynamically
+  // Load content dynamically
   function loadContent(url, pushToHistory = true) {
     fetch(url)
       .then(response => {
-        if (!response.ok) {
-          throw new Error(`Failed to fetch ${url} (Status: ${response.status})`);
-        }
+        if (!response.ok) throw new Error(`Failed to fetch ${url}`);
         return response.text();
       })
       .then(html => {
@@ -27,13 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           window.scrollTo(0, 0);
           updateActiveLink(url);
-        } else {
-          console.warn('No .main-content found in loaded page.');
         }
       })
       .catch(err => {
-        console.error('Error loading content:', err);
-        alert('Failed to load the page. Please try again.');
+        console.error('Content load failed:', err);
+        alert('Failed to load content.');
       });
   }
 
@@ -41,15 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateActiveLink(currentUrl) {
     sidebarLinks.forEach(link => {
       const linkUrl = link.getAttribute('href');
-      if (linkUrl === currentUrl) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
+      link.classList.toggle('active', linkUrl === currentUrl);
     });
   }
 
-  // Handle sidebar link clicks
+  // Attach click events to sidebar links (AJAX load)
   sidebarLinks.forEach(link => {
     link.addEventListener('click', event => {
       const url = link.getAttribute('href');
@@ -70,7 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // On initial load, highlight active link
-  const initialPage = window.location.pathname.split('/').pop() || 'index.html';
-  updateActiveLink(initialPage);
+  // Fallback behavior for non-sidebar links (force full load)
+  allLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    const isInternal = href && !href.startsWith('http') && !href.startsWith('#');
+    const isSidebarLink = link.closest('.sidebar');
+
+    if (isInternal && !isSidebarLink) {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        window.location.href = href;
+      });
+    }
+  });
+
+  // Highlight the active sidebar link on initial load
+  const initial = window.location.pathname.split('/').pop() || 'index.html';
+  updateActiveLink(initial);
 });
