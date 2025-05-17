@@ -214,6 +214,20 @@
   <a href="../Siochi/privacy-myths-importance.html" class="btn btn-success" style="padding: 10px 20px; margin-bottom: 30px;">Next</a>
 </div>
 
+<script>
+  // Force full page reload when navigation links are clicked
+  document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const href = link.getAttribute('href');
+      const isInternal = href && !href.startsWith('http') && !href.startsWith('#');
+
+      if (isInternal) {
+        e.preventDefault(); // prevent default browser behavior
+        window.location.href = href; // manually trigger full load
+      }
+    });
+  });
+</script>
 
 
 </body>
