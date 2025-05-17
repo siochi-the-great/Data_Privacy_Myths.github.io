@@ -1,83 +1,134 @@
-// sidebar-navigation.js
+// combined-navigation.js
 
 document.addEventListener('DOMContentLoaded', () => {
-  const sidebarLinks = document.querySelectorAll('.sidebar a');
-  const allLinks = document.querySelectorAll('a');
-  const mainContent = document.querySelector('.main-content');
+  // Get the base URL for GitHub Pages
+  // This handles both username.github.io and username.github.io/repo-name structures
+  const getBaseUrl = () => {
+    // Get current path
+    const path = window.location.pathname;
+    // For GitHub Pages with custom domain or username.github.io format
+    if (path.indexOf('.github.io') > -1 || path === '/') {
+      return '/';
+    }
+    // For username.github.io/repo-name format
+    const pathSegments = path.split('/');
+    if (pathSegments.length > 1) {
+      return '/' + pathSegments[1] + '/';
+    }
+    return '/';
+  };
 
-  // Load content dynamically
-  function loadContent(url, pushToHistory = true) {
-    fetch(url)
-      .then(response => {
-        if (!response.ok) throw new Error(`Failed to fetch ${url}`);
-        return response.text();
+  const baseUrl = getBaseUrl();
+
+  function resolveUrl(url) {
+    // If the URL is already absolute, return it as is
+    if (url.startsWith('http')) return url;
+    
+    // If the URL starts with '/', it's relative to the domain root
+    if (url.startsWith('/')) {
+      const domain = window.location.origin;
+      // For repo-based GitHub Pages, we need to adjust the path
+      if (baseUrl !== '/') {
+        // Remove any leading slash from URL to avoid double slashes
+        return `${domain}${baseUrl}${url.replace(/^\//, '')}`;
+      }
+      return `${domain}${url}`;
+    }
+
+    // For relative URLs without leading slash
+    const currentPath = window.location.pathname;
+    const directory = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+    return `${window.location.origin}${directory}${url}`;
+  }
+
+  // Sidebar SPA-style navigation
+  const sidebarLinks = document.querySelectorAll('.sidebar a');
+
+  function loadContent(url, push = true) {
+    const resolvedUrl = resolveUrl(url);
+    
+    fetch(resolvedUrl)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.text();
       })
       .then(html => {
         const parser = new DOMParser();
-        const newDoc = parser.parseFromString(html, 'text/html');
-        const newContent = newDoc.querySelector('.main-content');
-        const newTitle = newDoc.title;
+        const doc = parser.parseFromString(html, 'text/html');
+        const newContent = doc.querySelector('.main-content');
+        const pageTitle = doc.title;
 
-        if (newContent && mainContent) {
-          mainContent.innerHTML = newContent.innerHTML;
-          document.title = newTitle || document.title;
-          if (pushToHistory) {
-            history.pushState({ url }, '', url);
-          }
-          window.scrollTo(0, 0);
-          updateActiveLink(url);
+        if (newContent) {
+          document.querySelector('.main-content').innerHTML = newContent.innerHTML;
+          if (push) history.pushState({ url: resolvedUrl }, '', resolvedUrl);
+          if (pageTitle) document.title = pageTitle;
+          window.scrollTo({ top: 0, behavior: 'instant' }); 
         }
       })
       .catch(err => {
-        console.error('Content load failed:', err);
-        alert('Failed to load content.');
+        console.error('Failed to load content:', err);
+        alert('Sorry, the content could not be loaded.');
       });
   }
 
-  // Update active link styling
-  function updateActiveLink(currentUrl) {
-    sidebarLinks.forEach(link => {
-      const linkUrl = link.getAttribute('href');
-      link.classList.toggle('active', linkUrl === currentUrl);
-    });
-  }
-
-  // Attach click events to sidebar links (AJAX load)
   sidebarLinks.forEach(link => {
     link.addEventListener('click', event => {
       const url = link.getAttribute('href');
-      const current = window.location.pathname.split('/').pop() || 'index.html';
-
-      // Avoid reloading the same page
-      if (url === current) return;
+      const resolvedUrl = resolveUrl(url);
+      
+      // Check if this link should use SPA navigation or force a full reload
+      const forceReload = link.hasAttribute('data-force-reload');
+      
+      // Avoid reloading current page
+      if (window.location.href === resolvedUrl) return;
 
       event.preventDefault();
-      loadContent(url);
+      
+      if (forceReload) {
+        // Force full page reload for this specific link
+        // First scroll to top for immediate visual feedback
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        window.location.href = resolvedUrl;
+      } else {
+        // Use SPA-style navigation
+        loadContent(url);
+      }
     });
   });
 
-  // Handle browser back/forward navigation
+  // Back/forward navigation
   window.addEventListener('popstate', event => {
     if (event.state?.url) {
       loadContent(event.state.url, false);
     }
   });
-
-  // Fallback behavior for non-sidebar links (force full load)
-  allLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    const isInternal = href && !href.startsWith('http') && !href.startsWith('#');
-    const isSidebarLink = link.closest('.sidebar');
-
-    if (isInternal && !isSidebarLink) {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        window.location.href = href;
-      });
-    }
+  
+  // Force full page reload for non-sidebar links
+  document.querySelectorAll('a:not(.sidebar a)').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = link.getAttribute('href');
+      
+      // Skip links that are external, anchors, or javascript functions
+      if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('javascript:')) {
+        return;
+      }
+      
+      const resolvedUrl = resolveUrl(href);
+      
+      // Skip if it's the current page
+      if (window.location.href === resolvedUrl) {
+        return;
+      }
+      
+      e.preventDefault(); // prevent default browser behavior
+      
+      // First scroll to top for immediate visual feedback
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      
+      // Then trigger the full page load
+      window.location.href = resolvedUrl;
+    });
   });
-
-  // Highlight the active sidebar link on initial load
-  const initial = window.location.pathname.split('/').pop() || 'index.html';
-  updateActiveLink(initial);
 });
