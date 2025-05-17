@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Your custom CSS -->
+  <link rel="stylesheet" href="/stylePage.css">
+</head>
+<body>
+
+  <!-- Header and Navbar -->
+  <header>
+    <img src="/privacy_logo.png" alt="Logo">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about_us.html">About us</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Contact_us.html">Contact us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <hr>
+  </header>
+
+    <section class="pt-5 pb-3 bg-white">
+      <div class="container-fluid px-5 text-center">
+        <h2 class="fw-bold mb-3">About Us</h2>
+        <p class="text-secondary mb-0">
+          Our webpage is all about raising awareness about the challenges and misunderstandings surrounding social media and digital privacy. Our goal is to provide clear, accurate information that helps people better understand how their personal data is used and protected online. By debunking common myths, we empower users to make informed decisions and take control of their digital privacy in today’s connected world.
+        </p>
+      </div>
+    </section>
+
+    <section style="background-color: #f0f6ff;">
+      <div class="container-fluid px-5 py-4">  
+        <div class="row align-items-center mb-0">
+          <div class="col-md-6">
+            <img src="aboutus.jpg" alt="Group photo" class="img-fluid rounded w-75 mx-auto d-block" />
+          </div>
+          <div class="col-md-6">
+            <p class="mb-0">
+              In today's digital era, technology is developing at an alarming rate, putting the entire world at our fingertips.
+              This has created a limitless "Virtual World," where technology is used—and abused—without boundaries.
+              Since almost every part of life is now connected online via social media, websites, and digital payment systems,
+              people are particularly concerned about their privacy.
+              Privacy is an essential human need that encompasses many different aspects, including information, freedom of choice,
+              physical autonomy, and personal space, all of which have changed throughout time.
+              Everybody is entitled to limit the amount of their personal data that is shown online.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- Myths Section -->
+  <section class="py-5 bg-white">
+    <div class="container-fluid px-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 order-md-2">
+          <img src="social-media-myths.png" alt="Privacy visual" class="img-fluid rounded w-75 mx-auto d-block" />
+        </div>
+        <div class="col-md-6 order-md-1">
+          <p>
+            Privacy may seem simple, but it's actually quite complex due to the rapid evolution of technology and our increasing reliance on the digital world. As we shop, connect, and express ourselves online, we unknowingly share a large amount of personal data. While some believe protecting privacy is too difficult, even small, intentional actions can make a big difference. Technology itself can help defend our privacy when designed with care. However, as governments and companies collect vast data to improve services, common myths about privacy often mislead people and create a false sense of security.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pt-5 pb-5" style="background-color: #f0f6ff;">
+    <div class="container-fluid px-5 text-center">
+        <h2 class="fw-bold mb-3">Social Media &amp; Digital Privacy Myths</h2>
+        <p class="text-secondary mb-0">
+        A “Social Media &amp; Digital Privacy Myths” page systematically dispels widespread misunderstandings about how personal data is collected, shared, and stored on social platforms. Each myth is clearly stated and immediately followed by an evidence‑based explanation of the reality, often accompanied by illustrative icons or images for clarity. The page also offers actionable recommendations—like tightening privacy settings, using secure communication tools, and practicing mindful sharing—to help readers take concrete steps toward safeguarding their information. In doing so, it not only empowers visitors to make informed choices online but also strengthens the host site’s reputation as a reliable authority on digital ethics and user privacy.
+        </p>
+    </div>
+    </section>
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarToggle = document.querySelector('#sidebarToggle');
+            const mainContent = document.querySelector('.main-content');
+
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('show');
+                if (sidebar.classList.contains('show')) {
+                    sidebarToggle.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

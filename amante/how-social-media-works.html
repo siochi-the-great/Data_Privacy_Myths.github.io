@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Social Media Works | Digital Privacy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/stylePage.css">
+  <script src="/sidebar-navigation.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .main-content {
+      margin-left: 300px;
+      padding: 30px;
+      max-width: 800px;
+    }
+    .sidebar {
+      background-color: #f8f9fa;
+      padding: 20px;
+      height: 100vh;
+      overflow-y: auto;
+      position: fixed;
+      width: 280px;
+      border-right: 1px solid #ddd;
+    }
+    .section {
+      margin-bottom: 25px;
+    }
+    .section h3, .section h4 {
+      color: #2c3e50;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #eee;
+    }
+    .section a {
+      display: block;
+      color: #555;
+      text-decoration: none;
+      padding: 8px 5px;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .section a:hover {
+      background-color: #e9ecef;
+      color: #000;
+    }
+    .active-subtopic {
+      background-color: #ffffff;
+      color: #1976d2 !important;
+      font-weight: 500;
+    }
+    header {
+      margin-bottom: 30px;
+    }
+    header img {
+      height: 50px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    .info-graphic {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .comparison-card {
+      border-left: 4px solid #1976d2;
+      padding: 15px;
+      background-color: #f8f9fa;
+      margin: 15px 0;
+    }
+    .alert-info {
+      background-color: #e3f2fd;
+      border-color: #bbdefb;
+      color: #0d47a1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/privacy_logo.png" alt="Logo">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="/Homepage.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about_us.html">About us</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Contact_us.html">Contact us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <hr>
+  </header>
+
+  <div class="main-wrapper d-flex">
+    <div class="sidebar">
+      <div class="section">
+        <h4><b>Intro to Digital Privacy</b></h4>
+        <a href="what-is-digital-privacy.html">What Is Digital Privacy?</a>
+        <a href="understanding-location-services.html">Understanding Location Services</a>
+        <a href="privacy-settings-that-actually-help.html">Privacy Settings That Actually Help</a>
+        <a href="how-social-media-works.html" class="active-subtopic">How Social Media Really Works</a>
+        <a href="debunking-location-myths.html">Debunking Location Myths</a>
+      </div>
+
+      <div class="section">
+        <h3>Does Turning Off Location Stop Tracking?</h3>
+        <a href="gps-isnt-only-tracker.html">GPS Isn't the Only Tracker</a>
+        <a href="Bluetooth-Tracking.html">IP, Wi-Fi, and Bluetooth Tracking</a>
+        <a href="Background-App-Tracking.html">Background App Tracking</a>
+        <a href="Behavioral-and-Pattern-Tracking.html">Behavioral and Pattern Tracking</a>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <h1><i class="fas fa-share-alt tech-icon"></i> How Social Media Really Works</h1>
+
+      <p class="lead">Social media platforms offer "free" services, but users pay with their personal data. Understanding how this data is collected, analyzed, and monetized is key to protecting your digital privacy.</p>
+
+      <img src="IMAGE_PLACEHOLDER_1.jpg" alt="Data mining in social media illustration" class="info-graphic" title="Your posts, clicks, and pauses are all tracked">
+
+      <h2>What You Share vs. What They Know</h2>
+      <p>Most users believe they’re only sharing what they post. In reality, platforms track:</p>
+      <ul>
+        <li>Click patterns, scrolling speed, and pauses on content</li>
+        <li>Device information and IP addresses</li>
+        <li>Friends, followers, and messaging activity</li>
+        <li>Third-party app interactions</li>
+      </ul>
+      <p>Meta (Facebook) was reported in 2021 to collect data even when users are logged out or not using the app directly (source: FTC, The Markup).</p>
+
+      <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i> <strong>Fact:</strong> TikTok and Instagram track how long you linger on each post to infer your interests—even if you don’t engage with it.
+      </div>
+
+      <h2>The Algorithm’s Hidden Agenda</h2>
+      <p>Algorithms don’t just serve content—they shape behavior. By tracking engagement metrics like likes, shares, and watch time, platforms:</p>
+      <ul>
+        <li>Maximize time spent on the app</li>
+        <li>Expose users to increasingly extreme content (for engagement)</li>
+        <li>Segment users into targetable "audience buckets"</li>
+      </ul>
+
+      <img src="IMAGE_PLACEHOLDER_2.jpg" alt="Algorithmic behavior shaping diagram" class="info-graphic" title="Algorithms influence more than you think">
+
+      <h2>How Social Media Makes Money</h2>
+      <p>Social media companies profit through data-driven advertising. They build shadow profiles based on:</p>
+      <ul>
+        <li>Interests inferred from behavior</li>
+        <li>Devices and location patterns</li>
+        <li>Social graphs (who you interact with)</li>
+      </ul>
+      <p>Facebook earned over $114 billion in ad revenue in 2021, almost entirely from targeted advertising (source: Meta financial reports).</p>
+
+      <h2>Behavioral Targeting in Action</h2>
+      <div class="comparison-card">
+        <h4><i class="fas fa-bullseye"></i> Example:</h4>
+        <p>You search for hiking boots. Within hours, Instagram shows you ads for outdoor gear, and YouTube recommends hiking vlogs. Even if you didn’t search on those platforms.</p>
+      </div>
+
+      <img src="IMAGE_PLACEHOLDER_3.jpg" alt="Ad targeting workflow visual" class="info-graphic" title="Behavior-based ad targeting is cross-platform">
+
+      <h2>How to Regain Control</h2>
+      <ul>
+        <li>Limit app permissions (location, contacts, mic)</li>
+        <li>Use privacy-focused browsers and extensions (e.g., uBlock Origin, Privacy Badger)</li>
+        <li>Review data collection policies in each app’s settings</li>
+        <li>Use aliases or separate accounts for browsing vs. social use</li>
+        <li>Disable ad personalization where possible (Google, Meta settings)</li>
+      </ul>
+
+      <div class="card bg-light mt-4">
+        <div class="card-body">
+          <h5><i class="fas fa-lock text-primary"></i> Privacy Tip</h5>
+          <p>Even when private or deleted, posts may still be stored and analyzed on backend servers. Consider every action as permanent.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
