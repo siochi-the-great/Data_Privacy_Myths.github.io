@@ -1,16 +1,123 @@
-/* Add these styles to your existing stylePage.css */
+/* Complete stylePage.css with sidebar highlighting */
 
-/* Style for active sidebar link */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #ffffff;
+  padding: 10px 0 0;
+  text-align: left;
+  border-bottom: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+header hr {
+  border: none;
+  height: 5px;
+  background-color: #483d8b;
+  margin: 10px 0 0 0;
+}
+
+header img {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  height: 60px;
+}
+
+.navbar {
+  justify-content: center;
+  padding-top: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 600;
+  position: relative;
+  padding: 8px;
+}
+
+nav a:hover {
+  color: black;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background-color: black;
+  transition: 0.3s;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+.main-wrapper {
+  display: flex;
+  padding-top: 81px;
+  flex-direction: row;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #dde9f1;
+  color: black;
+  height: calc(100vh - 81px);
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 81px;
+  left: 0;
+  z-index: 100;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar h3 {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 8px 10px;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s;
+  border-radius: 3px;
+  margin-bottom: 2px;
+}
+
+.sidebar a:hover {
+  background-color: #2a4646;
+  color: white;
+}
+
+/* NEW: Style for active sidebar link */
 .sidebar a.active {
   background-color: #483d8b;
   color: white;
   font-weight: bold;
   position: relative;
-  padding-left: 15px;
-  border-radius: 3px;
+  padding-left: 18px;
+  border-left: 3px solid #ffffff;
 }
 
-/* Add a small indicator arrow/triangle to active link */
+/* NEW: Add a small indicator arrow/triangle to active link */
 .sidebar a.active::before {
   content: '';
   position: absolute;
@@ -22,7 +129,114 @@
   border-color: transparent transparent transparent white;
 }
 
-/* Add additional styling for active link on hover */
+/* NEW: Add additional styling for active link on hover */
 .sidebar a.active:hover {
   background-color: #3a3170; /* Slightly darker shade on hover */
+}
+
+.sidebar-toggle-btn {
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+  display: none;
+  background-color: #483d8b;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  background-color: #fefefe;
+  min-height: calc(100vh - 81px);
+  flex: 1;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.page-nav-button {
+  background-color: #483d8b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 250px;
+  margin-right: 15px;
+}
+
+/* Mobile-friendly Styles */
+@media (max-width: 991px) {
+  .main-wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    left: -250px;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .sidebar-toggle-btn {
+    display: block;
+  }
+
+  .navbar-collapse {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+}
+
+@media (max-width: 767px) {
+  header img {
+    height: 50px;
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .nav-link {
+    padding: 10px 0;
+  }
+  
+  .pagination-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .page-nav-button {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  nav {
+    font-size: 12px;
+  }
 }

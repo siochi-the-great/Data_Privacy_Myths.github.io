@@ -228,7 +228,25 @@
     });
   });
 </script>
-
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the current page URL
+    const currentPageUrl = window.location.pathname;
+    
+    // Find all sidebar links
+    const sidebarLinks = document.querySelectorAll('.sidebar a');
+    
+    // Loop through each link and check if its href matches the current URL
+    sidebarLinks.forEach(function(link) {
+      const linkHref = link.getAttribute('href');
+      
+      // If the current page URL ends with the link's href, mark it as active
+      if (currentPageUrl.endsWith(linkHref)) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
