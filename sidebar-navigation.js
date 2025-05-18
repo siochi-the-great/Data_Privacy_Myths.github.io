@@ -43,6 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Sidebar SPA-style navigation
   const sidebarLinks = document.querySelectorAll('.sidebar a');
+  
+  // Initialize navigation button handling
+  attachNavigationListeners();
+  
+  
 
   function loadContent(url, push = true) {
     const resolvedUrl = resolveUrl(url);
@@ -64,13 +69,44 @@ document.addEventListener('DOMContentLoaded', () => {
           document.querySelector('.main-content').innerHTML = newContent.innerHTML;
           if (push) history.pushState({ url: resolvedUrl }, '', resolvedUrl);
           if (pageTitle) document.title = pageTitle;
-          window.scrollTo({ top: 0, behavior: 'instant' }); 
+          window.scrollTo({ top: 0, behavior: 'instant' });
+          
+          // Re-attach event listeners to the newly loaded next/prev buttons
+          attachNavigationListeners();
         }
       })
       .catch(err => {
         console.error('Failed to load content:', err);
         alert('Sorry, the content could not be loaded.');
       });
+  }
+  
+  // Function to attach event listeners to navigation buttons
+  function attachNavigationListeners() {
+    const newNavigationButtons = document.querySelectorAll('.navigation-buttons a, .next-button, .prev-button, a.next, a.previous');
+    
+    newNavigationButtons.forEach(button => {
+      // Remove any existing event listeners first
+      const newButton = button.cloneNode(true);
+      button.parentNode.replaceChild(newButton, button);
+      
+      newButton.addEventListener('click', function(e) {
+        const href = newButton.getAttribute('href');
+        
+        // Skip links that are external, anchors, or javascript functions
+        if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('javascript:')) {
+          return;
+        }
+        
+        e.preventDefault();
+        
+        // First scroll to top for immediate visual feedback
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        
+        // Use SPA navigation for next/prev buttons
+        loadContent(href);
+      });
+    });
   }
 
   sidebarLinks.forEach(link => {
@@ -105,7 +141,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
-  // Force full page reload for non-sidebar links
+  // Force full page reload for non-sidebar, non-navigation links
+  document.querySelectorAll('a:not(.sidebar a):not(.navigation-buttons a):not(.next-button):not(.prev-button):not(a.next):not(a.previous)').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = link.getAttribute('href');
+      
+      // Skip links that are external, anchors, or javascript functions
+      if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('javascript:')) {
+        return;
+      }
+      
+      const resolvedUrl = resolveUrl(href);
+      
+      // Skip if it's the current page
+      if (window.location.href === resolvedUrl) {
+        return;
+      }
+      
+      e.preventDefault(); // prevent default browser behavior
+      
+      // First scroll to top for immediate visual feedback
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      
+      // Then trigger the full page load
+      window.location.href = resolvedUrl;
+    });
+  });
   document.querySelectorAll('a:not(.sidebar a)').forEach(link => {
     link.addEventListener('click', function(e) {
       const href = link.getAttribute('href');
