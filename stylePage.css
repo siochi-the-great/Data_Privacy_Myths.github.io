@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background-color: #f4f4f4;
+  line-height: 1.6;
 }
 
 header {
@@ -16,6 +17,7 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 header hr {
@@ -43,10 +45,11 @@ nav a {
   font-weight: 600;
   position: relative;
   padding: 8px;
+  transition: color 0.3s;
 }
 
 nav a:hover {
-  color: black;
+  color: #483d8b;
 }
 
 nav a::before {
@@ -56,7 +59,7 @@ nav a::before {
   left: 0;
   height: 3px;
   width: 0;
-  background-color: black;
+  background-color: #483d8b;
   transition: 0.3s;
 }
 
@@ -83,11 +86,15 @@ nav a:hover::before {
   left: 0;
   z-index: 100;
   transition: left 0.3s ease-in-out;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
 }
 
 .sidebar h3 {
   font-weight: bold;
   margin-top: 20px;
+  color: #483d8b;
+  border-bottom: 1px solid rgba(72, 61, 139, 0.2);
+  padding-bottom: 5px;
 }
 
 .sidebar a {
@@ -98,13 +105,14 @@ nav a:hover::before {
   font-weight: 500;
   font-size: 14px;
   transition: all 0.3s;
-  border-radius: 3px;
-  margin-bottom: 2px;
+  border-radius: 5px;
+  margin-bottom: 4px;
 }
 
 .sidebar a:hover {
   background-color: #2a4646;
   color: white;
+  transform: translateX(3px);
 }
 
 /* NEW: Style for active sidebar link */
@@ -132,6 +140,7 @@ nav a:hover::before {
 /* NEW: Add additional styling for active link on hover */
 .sidebar a.active:hover {
   background-color: #3a3170; /* Slightly darker shade on hover */
+  transform: translateX(3px);
 }
 
 .sidebar-toggle-btn {
@@ -146,15 +155,52 @@ nav a:hover::before {
   border: none;
   padding: 10px;
   border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.sidebar-toggle-btn:hover {
+  background-color: #3a3170;
+  transform: translateY(-50%) scale(1.05);
 }
 
 .main-content {
   margin-left: 250px;
-  padding: 20px;
+  padding: 30px;
   background-color: #fefefe;
   min-height: calc(100vh - 81px);
   flex: 1;
   transition: margin-left 0.3s ease-in-out;
+  line-height: 1.7;
+}
+
+.main-content h1 {
+  color: #483d8b;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #483d8b;
+  padding-bottom: 10px;
+}
+
+.main-content h2 {
+  color: #483d8b;
+  margin-top: 30px;
+}
+
+.main-content p {
+  margin-bottom: 18px;
+}
+
+.main-content a {
+  color: #483d8b;
+  text-decoration: none;
+  border-bottom: 1px dotted #483d8b;
+  transition: all 0.2s;
+}
+
+.main-content a:hover {
+  color: #2a2a5a;
+  border-bottom: 1px solid #2a2a5a;
 }
 
 .pagination-container {
@@ -171,12 +217,19 @@ nav a:hover::before {
   padding: 10px 20px;
   border-radius: 5px;
   font-weight: 500;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   margin-left: 250px;
   margin-right: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.page-nav-button:hover {
+  background-color: #3a3170;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 /* Mobile-friendly Styles */
