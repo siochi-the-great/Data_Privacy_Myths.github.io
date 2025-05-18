@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sidebar Page (Bootstrap)</title>
+    <title>how messaging-acutally works</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-auto">
-                  <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                   <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="../about_us.html">About us</a></li>
                         <li class="nav-item"><a class="nav-link" href="../authors.html">Authors</a></li>
                         <li class="nav-item"><a class="nav-link" href="../Contact_us.html">Contact us</a></li>
@@ -38,7 +38,8 @@
     <button class="sidebar-toggle-btn" id="sidebarToggle">
         <i class="fas fa-bars"></i>
     </button>
- <div class="main-wrapper">
+
+   <div class="main-wrapper">
         <div class="sidebar">
             <div class="section">
                 <h4><b>Intro to Digital Privacy</b></h4>
@@ -114,26 +115,26 @@
                 <a href="../Advincula/debunk-summar.html">Debunk Summary</a>
               </div>
           
-              <div class="section">
+             <div class="section">
                 <h3>Are Private Messages Private?</h3>
-                <a href="../ibargo/how-messaging-actually-works.html">How Messaging Actually Works</a>
-                <a href="../ibargo/end-to-end-encryption-basics.html">End-to-End Encryption Basics</a>
-                <a href="../ibargo/company-and-government-access.html">Company and Government Access</a>
-                <a href="../ibargo/metadata-matters.html">Metadata Matters</a>
-                <a href="../ibargo/screenshots-and-forwarding-risks.html">Screenshots and Forwarding Risks</a>
-                <a href="../ibargo/secure-messaging-alternatives.html">Secure Messaging Alternatives</a>
-                <a href="../ibargo/debunk-summary.html">Debunk Summary</a>
+                <a href="../ibardo/how-messaging-actually-works.html">How Messaging Actually Works</a>
+                <a href="../ibardo/end-to-end-encryption-basics.html">End-to-End Encryption Basics</a>
+                <a href="../ibardo/company-and-government-access.html">Company and Government Access</a>
+                <a href="../ibardo/metadata-matters.html">Metadata Matters</a>
+                <a href="../ibardo/screenshots-and-forwarding-risks.html">Screenshots and Forwarding Risks</a>
+                <a href="../ibardo/secure-messaging-alternatives.html">Secure Messaging Alternatives</a>
+                <a href="../ibardo/debunk-summary.html">Debunk Summary</a>
               </div>
           
               <div class="section">
                 <h3>Are VPNs Full Protection?</h3>
-                <a href="../ibargo_2/What VPNs Do and Don’t Do.html">What VPNs Do and Don't Do</a>
-                <a href="../ibargo_2/Common VPN Misconceptions.html">Common VPN Misconceptions</a>
-                <a href="../ibargo_2/Risks.html">Risks: Leaks, DNS, Fingerprinting</a>
-                <a href="../ibargo_2/Tracking Beyond Your IP.html">Tracking Beyond Your IP</a>
-                <a href="../ibargo_2/Picking a Reliable VPN.html">Picking a Reliable VPN</a>
-                <a href="../ibargo_2/Better Privacy Strategie.html">Better Privacy Strategies</a>
-                <a href="../ibargo_2/Debunk Summary.html">Debunk Summary</a>
+                <a href="../ibardo_2/What VPNs Do and Don’t Do.html">What VPNs Do and Don't Do</a>
+                <a href="../ibardo_2/Common VPN Misconceptions.html">Common VPN Misconceptions</a>
+                <a href="../ibardo_2/Risks.html">Risks: Leaks, DNS, Fingerprinting</a>
+                <a href="../ibardo_2/Tracking Beyond Your IP.html">Tracking Beyond Your IP</a>
+                <a href="../ibardo_2/Picking a Reliable VPN.html">Picking a Reliable VPN</a>
+                <a href="../ibardo_2/Better Privacy Strategie.html">Better Privacy Strategies</a>
+                <a href="../ibardo_2/Debunk Summary.html">Debunk Summary</a>
               </div>
           
               <div class="section">
@@ -161,7 +162,7 @@
                 <a href="../amante/debunking-location-myths.html">Debunk location myths</a>
               </div>
 
-                <div class="section">
+              <div class="section">
                 <h3>Conclusion</h3>
                 <a href="../Conclusion/final-thoughts.html">Final Thoughts</a>
                 <a href="../Conclusion/how-to-stay-safe.html">How to Stay Safe</a>
@@ -172,102 +173,63 @@
             </div>
           </div>
 
+        
+
         <div class="main-content" style="padding-top: 40px;">
             <div class="container">
-              <h5>How Messaging Actually Works</h5>
-              <p>When you send a message, here's what happens behind the scenes:</p>
-              <ul>
-                <li><strong>Message Creation:</strong> Your text is turned into digital data.</li>
-                <li><strong>Encryption (if available):</strong> Apps like Signal or WhatsApp encrypt your message before it’s sent.</li>
-                <li><strong>Server Handoff:</strong> The message travels through the internet or mobile network to the messaging service's server.</li>
-                <li><strong>Delivery:</strong> The server forwards the message to the recipient. If encrypted, it’s decrypted only on their device.</li>
-                <li><strong>Notification:</strong> The recipient’s phone is notified via push alerts or similar.</li>
-              </ul>
-              <p class="text-warning"><strong>Important:</strong> Not all messages are encrypted. Standard SMS goes through your mobile carrier, is stored (briefly) on their servers, and is not encrypted by default.</p>
-          
-              <h5 class="mt-4">End-to-End Encryption (E2EE): What Really Protects You</h5>
-              <p>End-to-End Encryption is the gold standard for message privacy. Here’s how it works:</p>
-              <ul>
-                <li><strong>Keys:</strong> Each user has a public and private key.</li>
-                <li><strong>Encryption:</strong> Your message is encrypted on your device using the recipient’s public key.</li>
-                <li><strong>Transmission:</strong> The encrypted data travels across the network.</li>
-                <li><strong>Decryption:</strong> Only the recipient’s private key can decrypt the message on their device.</li>
-              </ul>
-              <p class="text-success"><strong>Why it matters:</strong> Even the service provider (e.g., WhatsApp, Signal) can’t read your messages, since they don’t have the private decryption key.</p>
-          
-              <h5 class="mt-4">Metadata: The Invisible Trail You Leave</h5>
-              <p>Even with E2EE, platforms can collect metadata — information about your communication:</p>
-              <ul>
-                <li>Who you messaged</li>
-                <li>When and how often</li>
-                <li>Your IP address and location</li>
-              </ul>
-              <p class="text-danger"><strong> This data can be accessed by companies and may be shared with governments under legal orders — even if your message content remains encrypted.</strong></p>
-          
-              <h5 class="mt-4">Government & Company Access</h5>
-              <ul>
-                <li><strong>Legal Compliance:</strong> Companies like Meta, Google, and Apple fulfill up to 66% of global government data requests.</li>
-                <li><strong>Data Growth:</strong> From 2013 to 2019, government requests rose by 213%, with nearly 500,000 requests filed in 2019 alone.</li>
-                <li><strong>Company Policies Vary:</strong> Some apps are more willing than others to hand over data. Read the privacy policies.</li>
-              </ul>
-              <p><strong>Choose apps with transparency reports and minimal data retention practices.</strong></p>
-          
-              <h5 class="mt-4">Screenshots and Forwarding: The Human Weakness</h5>
-              <p>Even encrypted messages can be exposed if someone:</p>
-              <ul>
-                <li>Takes a screenshot</li>
-                <li>Copies or forwards the message</li>
-                <li>Saves it outside the app</li>
-              </ul>
-              <p class="text-danger"><strong>Risks:</strong> Messages can be reshared without your consent. Screenshots can be edited and taken out of context. Forwarded content may lead back to you, even in unintended ways.</p>
-              <p><strong>🛡 Protect Yourself:</strong></p>
-              <ul>
-                <li>Use disappearing messages.</li>
-                <li>Communicate sharing expectations with others.</li>
-                <li>Choose apps that restrict screenshots (e.g., Telegram’s Secret Chats, Confide).</li>
-              </ul>
-          
-              <h5 class="mt-4">Secure Messaging Alternatives</h5>
-              <p>For strong privacy, consider these encrypted apps:</p>
-              <table class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>App</th>
-                    <th>Features</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Signal</td>
-                    <td>Open source, strong E2EE, minimal metadata collection</td>
-                  </tr>
-                  <tr>
-                    <td>Telegram</td>
-                    <td>Secret Chats offer E2EE + screenshot alerts</td>
-                  </tr>
-                  <tr>
-                    <td>Viber</td>
-                    <td>Disappearing messages, PIN-protected chats, private mode</td>
-                  </tr>
-                  <tr>
-                    <td>WhatsApp</td>
-                    <td>Default E2EE, owned by Meta (metadata may be collected)</td>
-                  </tr>
-                </tbody>
-              </table>
-              <p><strong>Encrypted messages protect your data from:</strong></p>
-              <ul>
-                <li>Service providers</li>
-                <li>Hackers</li>
-                <li>Government surveillance</li>
-              </ul>
+                <img src="images/1.jpg" alt="how-messaging-actually-works" class="img-fluid mb-3">
+        
+                <div class="mb-4">
+                    Texting on cell phones has become the preferred way of communication amongst the younger generation. Now with more sophisticated phones and smart devices, texting has spilled over into the business world and become a hit with adults. As new cell phones come out, networks are offering better solutions and packages for this new technical obsession. Some may wonder what the technology behind text messaging is or how it is possible.
+                </div>
+        
+                <h4><i class="fa-solid fa-envelope-open-text me-2"></i>Sending a Message</h4>
+                <ul>
+                    <li>The message is turned into digital data.</li>
+                    <li>This data is encrypted (if the app supports it).</li>
+                    <li>It’s sent through the internet to the app’s server.</li>
+                </ul>
+        
+                <h4><i class="fa-solid fa-satellite-dish me-2"></i>Delivery to Receiver</h4>
+                <ul>
+                    <li>The message is decrypted (if encrypted).</li>
+                    <li>Delivered to the recipient’s phone using internet or mobile network.</li>
+                    <li>Push notifications alert them of the new message.</li>
+                </ul>
+        
+                <h4><i class="fa-solid fa-user-lock me-2"></i>End-to-End Encryption (E2EE)</h4>
+                <ul>
+                    <li>Only the sender and recipient can read the message.</li>
+                    <li>Even the server cannot see it—it only delivers the message.</li>
+                    <li>Messages are encrypted before they leave your device.</li>
+                </ul>
+        
+                <h4><i class="fa-solid fa-mobile me-2"></i>Cellular Messaging (SMS)</h4>
+                <ul>
+                    <li>The message goes through your mobile carrier’s control towers.</li>
+                    <li>No encryption is used by default.</li>
+                    <li>Messages are briefly stored on the Short Message Service Center (SMSC).</li>
+                </ul>
             </div>
-          </section>
-    
- </div>
-</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+        
+
+        <div class="text-muted small text-center">
+            <p><strong>Sources:</strong></p>
+            <p>
+              <a href="https://www.techwalla.com/articles/how-does-text-messaging-work" target="_blank" rel="noopener noreferrer">
+                How Does Text Messaging Work – Techwalla
+              </a>
+            </p>
+            <p>
+              <a href="https://systemdesignschool.io/blog/messaging-systems" target="_blank" rel="noopener noreferrer">
+                Messaging Systems – System Design School
+              </a>
+            </p>
+          </div>
+          
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sidebar = document.querySelector('.sidebar');
@@ -284,14 +246,14 @@
             });
         });
     </script>
-     <div class="pagination-container">
-    <a href="../ibargo/secure-messaging-alternatives.html" class="page-nav-button" >
+   <div class="pagination-container">
+    <a href="../Advincula/debunk-summar.html" class="page-nav-button">
         <i class="fas fa-arrow-left"></i> Previous
     </a>
-    <a href="../ibargo_2/What VPNs Do and Don’t Do.html" class="page-nav-button">
+    <a href="../ibargo/end-to-end-encryption-basics.html" class="page-nav-button">
         Next <i class="fas fa-arrow-right"></i>
     </a>
-  </div>
+    </div>
 <script>
   // Force full page reload when navigation links are clicked
   document.querySelectorAll('a').forEach(link => {
